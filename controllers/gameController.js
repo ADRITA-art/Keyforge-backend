@@ -19,7 +19,7 @@ const handleSocketConnection = (socket, io) => {
 
     socket.join(roomId);
     socket.emit("paragraph", roomData.paragraph);
-    io.to(roomId).emit("playerJoined", { playerId });
+    io.to(roomId).emit("playerJoined", { playerId, players: roomData.players });
   });
 
   socket.on("updateProgress", ({ roomId, playerId, progress }) => {

@@ -4,7 +4,7 @@ const socket = io("ws://localhost:5000");
 
 
 socket.on("connect", () => {
-  console.log("✅ Connected to WebSocket server!");
+  console.log(" Connected to WebSocket server!");
   
   socket.emit("joinGame", "Player1");
 
@@ -12,7 +12,7 @@ socket.on("connect", () => {
 });
 
 socket.on("message", (msg) => {
-  console.log("📩 Server says:", msg);
+  console.log(" Server says:", msg);
 });
 
 socket.on("playerJoined", (data) => {
@@ -20,9 +20,9 @@ socket.on("playerJoined", (data) => {
 });
 
 socket.on("updateProgress", (data) => {
-  console.log("📊 Typing progress update:", data);
+  console.log(" Typing progress update:", data);
 });
 
 socket.on("disconnect", () => {
-  console.log("❌ Disconnected from WebSocket server");
+  console.log(" Disconnected from WebSocket server");
 });

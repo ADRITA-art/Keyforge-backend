@@ -1,11 +1,11 @@
 const { joinRoom, updateProgress, getRoomData, createRoom } = require("../models/gameModel");
 
 const handleSocketConnection = (socket, io) => {
-  console.log(`⚡ New client connected: ${socket.id}`);
+  console.log(` New client connected: ${socket.id}`);
 
   socket.on("createRoom", ({ roomId }) => {
     createRoom(roomId);
-    console.log(`🏠 Room ${roomId} created`);
+    console.log(` Room ${roomId} created`);
   });
 
   socket.on("joinRoom", ({ roomId, playerId }) => {
@@ -28,12 +28,12 @@ const handleSocketConnection = (socket, io) => {
 
     if (isCompleted) {
       io.to(roomId).emit("winner", { playerId });
-      console.log(`🏆 Player ${playerId} won the game in Room ${roomId}`);
+      console.log(` Player ${playerId} won the game in Room ${roomId}`);
     }
   });
 
   socket.on("disconnect", () => {
-    console.log(`❌ Player ${socket.id} disconnected.`);
+    console.log(` Player ${socket.id} disconnected.`);
   });
 };
 
